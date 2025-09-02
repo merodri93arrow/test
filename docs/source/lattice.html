@@ -143,7 +143,7 @@ td.left{text-align:left !important;}
 /* ===================== CONFIG ===================== */
 // Excel file location (relative next to this HTML, or absolute OneDrive/SharePoint link with ?download=1)
 let EXCEL_URL = "./Lattice_GUI_sharepoint_version.xlsx";
-// Optional override with querystring: ?excel=<url>
+const res = await fetch(EXCEL_URL, {cache:"no-store", credentials:"include"});
 (function(){ const p=new URLSearchParams(location.search); if(p.has("excel")) EXCEL_URL=p.get("excel"); })();
 
 // Two logos (same height; widths can vary)
