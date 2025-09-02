@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Selector Guide</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<title>Arrow × Lattice Selector Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 :root{
   --bg:#fff; --fg:#111827; --muted:#6b7280; --border:#e5e7eb;
@@ -14,7 +15,22 @@
 *{box-sizing:border-box}
 body{margin:0;padding:16px;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--fg);background:#fff}
 
-/* Top bar layout: [logos] [centered title] [actions] */
+/* ===== Banner (Arrow newsletter-style, lightweight div version) ===== */
+@font-face{font-family:'Arrow Text';src:url('https://static4.arrow.com/-/media/arrow/Arrow_Webfont/WOFF/ArrowText_W_Rg.woff') format('woff');font-display:swap}
+@font-face{font-family:'Arrow Display';src:url('https://static4.arrow.com/-/media/arrow/Arrow_Webfont/WOFF/ArrowDisplay_W_Rg.woff') format('woff');font-display:swap}
+.banner{font-family:'Arrow Text',Arial,Helvetica,sans-serif;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:-8px -8px 16px -8px}
+.banner .b-top{background:#000;color:#fff;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px}
+.banner .b-top img{height:28px;display:block}
+.banner .b-nav{display:flex;flex-wrap:wrap;gap:12px;font:600 10.5px/1 'Arrow Display',Arial,Helvetica,sans-serif;text-transform:uppercase}
+.banner .b-nav a{color:#fff;text-decoration:none;border-bottom:2px solid #0084D5;padding-bottom:2px}
+.banner .b-hero{display:block;width:100%;background:#fff}
+.banner .b-hero img{width:100%;max-height:280px;object-fit:cover;display:block}
+.banner .b-body{padding:14px 18px}
+.banner .b-body h2{font:700 16px/1.2 'Arrow Display',Arial,Helvetica,sans-serif;margin:0 0 8px}
+.banner .b-body ul{margin:6px 0 0 18px;padding:0}
+.banner .b-body li{font-size:14px;line-height:1.45;margin:3px 0}
+
+/* ===== App top bar layout: [logos] [centered title] [actions] ===== */
 .topbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:10px}
 .brand-logos{display:flex;align-items:center;gap:10px}
 .logo{height:var(--logoH);width:auto;border-radius:6px;box-shadow:0 0 0 1px var(--border) inset;display:block}
@@ -25,7 +41,7 @@ button.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
 button.primary:hover{background:var(--brand-2)}
 .pill{padding:2px 8px;border-radius:999px;background:#f1f5f9;border:1px solid var(--border);font-size:12px;color:var(--muted)}
 
-/* Filters */
+/* ===== Filters ===== */
 .filters-wrap{border:1px solid var(--border);border-radius:10px;padding:10px;overflow-x:auto;margin-bottom:10px}
 .filters-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(180px,200px);gap:12px;padding-bottom:4px;min-height:230px}
 .filter-card{border:2px solid var(--border);border-radius:12px;background:#fff;height:240px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .15s,opacity .15s}
@@ -37,13 +53,13 @@ button.primary:hover{background:var(--brand-2)}
 .filter-body label{display:flex;align-items:center;gap:6px;padding:1px 0}
 .filter-foot{padding:6px 8px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:space-between;align-items:center}
 
-/* Bottom split */
+/* ===== Bottom split ===== */
 .bottom-area{display:flex;gap:12px;align-items:flex-start}
 .table-container{width:50%;min-width:420px;max-width:100%}
 .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .table-scroll{height:var(--contentHeight);overflow-y:auto}
 
-/* Table */
+/* ===== Table ===== */
 table{width:100%;border-collapse:collapse;font-size:12px;background:#fff}
 thead th{position:sticky;top:0;background:#f8fafc;border-bottom:1px solid var(--border);text-align:center;padding:8px 6px;z-index:1}
 tbody td{border-top:1px solid var(--border);text-align:center;padding:6px;white-space:nowrap}
@@ -53,7 +69,7 @@ tbody tr.selected{background:var(--sel)}
 td.left{text-align:left !important;}
 .pager{display:flex;align-items:center;gap:8px;justify-content:flex-start;margin-top:8px;font-size:12px;color:#6b7280}
 
-/* Details */
+/* ===== Details ===== */
 .details-container{flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px}
 .details-card{border:1px solid var(--border);border-radius:10px;background:#fff;padding:10px;display:flex;flex-direction:column;height:var(--contentHeight)}
 .details-head{font-weight:700;font-size:14px;margin-bottom:6px}
@@ -65,16 +81,44 @@ td.left{text-align:left !important;}
 .notice{font-size:12px;color:#6b7280}
 .error{color:#b91c1c}
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width:640px){
   :root{--logoH:22px}
   .app-title{font-size:18px}
+  .bottom-area{flex-direction:column}
+  .table-container{width:100%}
 }
 </style>
 </head>
 <body>
 
-<!-- Top bar -->
+<!-- ===================== BANNER ===================== -->
+<div class="banner" role="region" aria-label="Arrow ESC banner">
+  <div class="b-top">
+    <a href="https://www.arrow.com/en/components" target="_blank" rel="noopener">
+      <img src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B0eebc93a-f74c-4afe-ad94-b5d5e8739bed%7D_ArrowEmailHeader_line_logo.jpg" alt="Arrow Electronics" />
+    </a>
+    <nav class="b-nav" aria-label="Quick links">
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/EventPlanHome.aspx" target="_blank" rel="noopener">ESC Americas</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Lattice-FPGA-Resources.aspx" target="_blank" rel="noopener">Lattice FPGA</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/SW-Team.aspx" target="_blank" rel="noopener">SW ESC</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Migrations.aspx" target="_blank" rel="noopener">Migrations</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/_layouts/15/stream.aspx?id=%2Fsites%2FArrowEngineering%2FESChome%2FShared%20Documents%2FSalesForce%5FOpenACaseTraining%2Emp4" target="_blank" rel="noopener">Create a case</a>
+    </nav>
+  </div>
+  <a class="b-hero" href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Lattice-FPGA-Resources.aspx" target="_blank" rel="noopener">
+    <img src="https://bitbucket.org/arrowesc/lattice/raw/ceb7c070dda60fc7f8d0ae1966d2725ad0148c58/sharepoint/brand_logos/banner.png" alt="FPGA Dedicated SharePoint" />
+  </a>
+  <div class="b-body">
+    <h2>Lattice Selector Guide – Database Update</h2>
+    <ul>
+      <li>Added <strong>1,014</strong> part numbers.</li>
+      <li>New columns: Tools, PCIe (Soft/Hard), MIPI (Soft/Hard), Configuration type, Maximum input frequency.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== TOP BAR ===================== -->
 <div class="topbar">
   <div class="brand-logos">
     <a id="logo1-link" href="#" target="_blank" rel="noopener" aria-label="Logo 1">
@@ -91,14 +135,14 @@ td.left{text-align:left !important;}
   </div>
 </div>
 
-<!-- Filters -->
+<!-- ===================== FILTERS ===================== -->
 <div class="filters-wrap">
   <div class="filters-grid" id="filters-grid"></div>
 </div>
 
 <div class="statusbar" id="active-filters"></div>
 
-<!-- Bottom area -->
+<!-- ===================== BOTTOM AREA ===================== -->
 <div class="bottom-area">
   <!-- Left: table -->
   <div class="table-container">
@@ -139,6 +183,7 @@ td.left{text-align:left !important;}
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 /* ===================== CONFIG ===================== */
 // Excel file location (relative next to this HTML, or absolute OneDrive/SharePoint link with ?download=1)
@@ -441,10 +486,10 @@ document.getElementById("btn-export").addEventListener("click", exportDetailsToX
   // Logos
   const img1=document.getElementById("logo1-img"), link1=document.getElementById("logo1-link");
   const img2=document.getElementById("logo2-img"), link2=document.getElementById("logo2-link");
-  if(LOGO1_URL && LOGO1_URL.trim()!==""){ img1.src=LOGO1_URL; img1.style.display="block"; } else { img1.style.display="none"; }
-  if(LOGO2_URL && LOGO2_URL.trim()!==""){ img2.src=LOGO2_URL; img2.style.display="block"; } else { img2.style.display="none"; }
-  if(LOGO1_LINK && LOGO1_LINK.trim()!==""){ link1.href=LOGO1_LINK; } else { link1.removeAttribute("href"); link1.style.pointerEvents="none"; }
-  if(LOGO2_LINK && LOGO2_LINK.trim()!==""){ link2.href=LOGO2_LINK; } else { link2.removeAttribute("href"); link2.style.pointerEvents="none"; }
+  if(LOGO1_URL && LOGO1_URL.trim()!==''){ img1.src=LOGO1_URL; img1.style.display="block"; } else { img1.style.display="none"; }
+  if(LOGO2_URL && LOGO2_URL.trim()!==''){ img2.src=LOGO2_URL; img2.style.display="block"; } else { img2.style.display="none"; }
+  if(LOGO1_LINK && LOGO1_LINK.trim()!==''){ link1.href=LOGO1_LINK; } else { link1.removeAttribute("href"); link1.style.pointerEvents="none"; }
+  if(LOGO2_LINK && LOGO2_LINK.trim()!==''){ link2.href=LOGO2_LINK; } else { link2.removeAttribute("href"); link2.style.pointerEvents="none"; }
 
   // Data
   enableDataUI(false);
