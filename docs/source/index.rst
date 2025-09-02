@@ -1,4 +1,4 @@
 Lattice 
 ==============================
 
-- `Abrir Lattice Selector <_static/lattice.html>`_
+- `Abrir Lattice Selector <lattice.html>`_
