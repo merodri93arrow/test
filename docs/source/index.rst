@@ -1,4 +1,3 @@
-Lattice 
-==============================
-
-- `Abrir Lattice Selector <lattice.html>`_
+Lattice
+.. raw:: html
+   :file: _static/lattice.html
