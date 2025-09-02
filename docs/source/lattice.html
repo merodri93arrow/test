@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Selector Guide</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 :root{
   --bg:#fff; --fg:#111827; --muted:#6b7280; --border:#e5e7eb;
@@ -14,7 +16,22 @@
 *{box-sizing:border-box}
 body{margin:0;padding:16px;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--fg);background:#fff}
 
-/* Top bar layout: [logos] [centered title] [actions] */
+/* ===== Banner (Arrow newsletter-style, lightweight div version) ===== */
+@font-face{font-family:'Arrow Text';src:url('https://static4.arrow.com/-/media/arrow/Arrow_Webfont/WOFF/ArrowText_W_Rg.woff') format('woff');font-display:swap}
+@font-face{font-family:'Arrow Display';src:url('https://static4.arrow.com/-/media/arrow/Arrow_Webfont/WOFF/ArrowDisplay_W_Rg.woff') format('woff');font-display:swap}
+.banner{font-family:'Arrow Text',Arial,Helvetica,sans-serif;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:-8px -8px 16px -8px}
+.banner .b-top{background:#000;color:#fff;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px}
+.banner .b-top img{height:28px;display:block}
+.banner .b-nav{display:flex;flex-wrap:wrap;gap:12px;font:600 10.5px/1 'Arrow Display',Arial,Helvetica,sans-serif;text-transform:uppercase}
+.banner .b-nav a{color:#fff;text-decoration:none;border-bottom:2px solid #0084D5;padding-bottom:2px}
+.banner .b-hero{display:block;width:100%;background:#fff}
+.banner .b-hero img{width:100%;max-height:280px;object-fit:cover;display:block}
+.banner .b-body{padding:14px 18px}
+.banner .b-body h2{font:700 16px/1.2 'Arrow Display',Arial,Helvetica,sans-serif;margin:0 0 8px}
+.banner .b-body ul{margin:6px 0 0 18px;padding:0}
+.banner .b-body li{font-size:14px;line-height:1.45;margin:3px 0}
+
+/* ===== App top bar layout: [logos] [centered title] [actions] ===== */
 .topbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:10px}
 .brand-logos{display:flex;align-items:center;gap:10px}
 .logo{height:var(--logoH);width:auto;border-radius:6px;box-shadow:0 0 0 1px var(--border) inset;display:block}
@@ -65,16 +82,37 @@ td.left{text-align:left !important;}
 .notice{font-size:12px;color:#6b7280}
 .error{color:#b91c1c}
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width:640px){
   :root{--logoH:22px}
   .app-title{font-size:18px}
+  .bottom-area{flex-direction:column}
+  .table-container{width:100%}
 }
 </style>
 </head>
 <body>
 
-<!-- Top bar -->
+<!-- ===================== BANNER ===================== -->
+<div class="banner" role="region" aria-label="Arrow ESC banner">
+  <div class="b-top">
+    <a href="https://www.arrow.com/en/components" target="_blank" rel="noopener">
+      <img src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B0eebc93a-f74c-4afe-ad94-b5d5e8739bed%7D_ArrowEmailHeader_line_logo.jpg" alt="Arrow Electronics" />
+    </a>
+    <nav class="b-nav" aria-label="Quick links">
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/EventPlanHome.aspx" target="_blank" rel="noopener">ESC Americas</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Lattice-FPGA-Resources.aspx" target="_blank" rel="noopener">Lattice FPGA</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/SW-Team.aspx" target="_blank" rel="noopener">SW ESC</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Migrations.aspx" target="_blank" rel="noopener">Migrations</a>
+      <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/_layouts/15/stream.aspx?id=%2Fsites%2FArrowEngineering%2FESChome%2FShared%20Documents%2FSalesForce%5FOpenACaseTraining%2Emp4" target="_blank" rel="noopener">Create a case</a>
+    </nav>
+  </div>
+  <a class="b-hero" href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Lattice-FPGA-Resources.aspx" target="_blank" rel="noopener">
+    <img src="https://bitbucket.org/arrowesc/lattice/raw/ceb7c070dda60fc7f8d0ae1966d2725ad0148c58/sharepoint/brand_logos/banner.png" alt="FPGA Dedicated SharePoint" />
+  </a>
+</div>
+
+<!-- ===================== TOP BAR ===================== -->
 <div class="topbar">
   <div class="brand-logos">
     <a id="logo1-link" href="#" target="_blank" rel="noopener" aria-label="Logo 1">
@@ -147,10 +185,9 @@ let EXCEL_URL = "./Lattice_GUI_sharepoint_version.xlsx";
 (function(){ const p=new URLSearchParams(location.search); if(p.has("excel")) EXCEL_URL=p.get("excel"); })();
 
 // Two logos (same height; widths can vary)
-let LOGO1_URL  = "https://bitbucket.org/arrowesc/lattice/raw/b15f14d70f246b41b711f3234a9612d010ade8ae/sharepoint/brand_logos/Arrow_Worm_white.jpg";   // e.g. Arrow icon
-let LOGO1_LINK = "https://www.arrow.com/";                // optional target when clicking logo 1
-let LOGO2_URL  = "https://bitbucket.org/arrowesc/lattice/raw/b15f14d70f246b41b711f3234a9612d010ade8ae/sharepoint/brand_logos/Lattice_Logo_Black_TransparentBG.jpg";   // e.g. Lattice logo (wider)
-let LOGO2_LINK = "https://www.latticesemi.com/";                // optional target when clicking logo 2
+
+let LOGO1_URL  = "https://bitbucket.org/arrowesc/lattice/raw/b15f14d70f246b41b711f3234a9612d010ade8ae/sharepoint/brand_logos/Lattice_Logo_Black_TransparentBG.jpg";   // e.g. Lattice logo (wider)
+let LOGO1_LINK = "https://www.latticesemi.com/";                // optional target when clicking logo 2
 
 /* ============== Columns configuration ============== */
 const EXPECTED_COLUMNS = ["Part Number","Family","Logic Elements","Total I/O","Pin/Balls Count","Pitch (mm)","Size (mm)","Temperature","Package Type","Max Frequency","PCIe","MIPI"];
@@ -441,11 +478,11 @@ document.getElementById("btn-export").addEventListener("click", exportDetailsToX
 (function init(){
   // Logos
   const img1=document.getElementById("logo1-img"), link1=document.getElementById("logo1-link");
-  const img2=document.getElementById("logo2-img"), link2=document.getElementById("logo2-link");
-  if(LOGO1_URL && LOGO1_URL.trim()!==""){ img1.src=LOGO1_URL; img1.style.display="block"; } else { img1.style.display="none"; }
-  if(LOGO2_URL && LOGO2_URL.trim()!==""){ img2.src=LOGO2_URL; img2.style.display="block"; } else { img2.style.display="none"; }
-  if(LOGO1_LINK && LOGO1_LINK.trim()!==""){ link1.href=LOGO1_LINK; } else { link1.removeAttribute("href"); link1.style.pointerEvents="none"; }
-  if(LOGO2_LINK && LOGO2_LINK.trim()!==""){ link2.href=LOGO2_LINK; } else { link2.removeAttribute("href"); link2.style.pointerEvents="none"; }
+  
+  if(LOGO1_URL && LOGO1_URL.trim()!==''){ img1.src=LOGO1_URL; img1.style.display="block"; } else { img1.style.display="none"; }
+  
+  if(LOGO1_LINK && LOGO1_LINK.trim()!==''){ link1.href=LOGO1_LINK; } else { link1.removeAttribute("href"); link1.style.pointerEvents="none"; }
+ 
 
   // Data
   enableDataUI(false);
