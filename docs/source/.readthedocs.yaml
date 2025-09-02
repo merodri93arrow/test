@@ -1,4 +1,3 @@
-# .readthedocs.yaml
 version: 2
 
 build:
@@ -7,9 +6,8 @@ build:
     python: "3.11"
 
 sphinx:
-  configuration: docs/source/conf.py
+  configuration: docs/conf.py   # <-- aquí el cambio
 
-# (Opcional) Si tu doc usa extensiones o temas, instala requerimientos
 python:
   install:
     - requirements: docs/requirements.txt
