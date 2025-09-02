@@ -1,10 +1,11 @@
 Lattice Software Quick Starter
 ==============================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents
+Selector
+--------
 
-   usage
-   api
-   lattice   # esta es una página .rst que vamos a crear abajo
+.. raw:: html
+
+   <iframe src="lattice.html"
+           style="width:100%; height:85vh; border:0;"
+           title="Lattice Selector Guide"></iframe>
