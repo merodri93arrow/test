@@ -33,3 +33,5 @@ html_theme = 'furo'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+html_extra_path = ['lattice.html', 'Lattice_GUI_sharepoint_version.xlsx']
