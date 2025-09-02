@@ -6,7 +6,7 @@ build:
     python: "3.11"
 
 sphinx:
-  configuration: docs/conf.py   # <-- aquí el cambio
+  configuration: conf.py  # conf.py está en la raíz
 
 python:
   install:
