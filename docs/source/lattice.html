@@ -1,0 +1,624 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>FPGA Dedicated SharePoint</title>
+<!--[if gte mso 9]><xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml><![endif]-->
+
+<!--[if mso]><xml>
+<w:WordDocument xmlns:w="urn:schemas-microsoft-com:office:word">
+<w:DontUseAdvancedTypographyReadingMail/>
+</w:WordDocument>
+</xml><![endif]-->
+
+<style type="text/css">
+:root {
+    Color-scheme: light dark;
+    supported-color-schemes: light dark;
+}
+@font-face {
+    font-family: 'Arrow Text';
+    src: local('Arrow Text'), url(https://static4.arrow.com/-/media/arrow/Arrow_Webfont/WOFF/ArrowText_W_Rg.woff) format('woff');
+    mso-generic-font-family: swiss;
+    mso-font-alt: "Arial";
+}
+@font-face {
+    font-family: 'Arrow Display';
+    src: local('Arrow Display'), url(https://static4.arrow.com/-/media/arrow/Arrow_Webfont/WOFF/ArrowDisplay_W_Rg.woff) format('woff');
+    mso-generic-font-family: swiss;
+    mso-font-alt: "Arial";
+}
+.ReadMsgBody {
+    width: 100%;
+    background-color: #ffffff;
+}
+.ExternalClass {
+    width: 100%;
+    background-color: #ffffff;
+}
+body {
+    width: 100%;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-family: 'Arrow Text', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+/* Remove spacing between tables in Outlook 2007 and up */
+table {
+    border-collapse: collapse;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0;
+}
+tr {
+    border-collapse: collapse;
+}
+td {
+    mso-table-lspace: 0;
+    mso-table-rspace: 0;
+}
+td, a, span {
+    border-collapse: collapse;
+    mso-line-height-rule: exactly;
+}
+/* Allow smoother rendering of resized image in Internet Explorer */
+img {
+    -ms-interpolation-mode: bicubic;
+}
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+/* Hover Colors */
+.blue-text-link:hover {
+    color: #0069AA !important;
+}
+.blue-text-link:active {
+    color: #004E7F !important;
+}
+.bluebutton td:hover {
+    background-color: #0069AA;
+}
+.bluebutton td:active {
+    background-color: #004E7F;
+}
+.outlinebutton td:hover {
+    background-color: #EEEEEE;
+}
+.outlinebutton td:active {
+    background-color: #DCDCDC;
+}
+.blueoutlinebutton td:hover {
+    background-color: #E6F0F7;
+}
+.blueoutlinebutton td:active {
+    background-color: #CCE1EE;
+}
+.whiteoutlinebutton td:hover {
+    background-color: #1A9EEF;
+}
+.whiteoutlinebutton td:active {
+    background-color: #33B7FF;
+}
+.whitebutton td:hover {
+    background-color: #E6F0F7;
+}
+.whitebutton td:active {
+    background-color: #CCE1EE;
+}
+.whiteblkbutton td:hover {
+    background-color: #EEEEEE;
+}
+.whiteblkbutton td:active {
+    background-color: #DCDCDC;
+}
+
+@media (prefers-color-scheme: dark ) {
+.body {
+    background-color: #000000 !important;
+}
+[data-ogsc] .body {
+    background-color: #000000 !important;
+}
+.outlinebutton {
+    border: 1px solid #F2F2F2 !important;
+}
+[bgcolor="#F2F2F2"] > a {
+    color: #0084D5 !important;
+}
+[bgcolor="#FFFFFF"] > a {
+    color: #FFFFFF !important;
+}
+[bgcolor="#FFF"] > a {
+    color: #0084D5 !important;
+}
+[bgcolor="#E6E6E6"] > a {
+    color: #FFFFFF !important;
+}
+[bgcolor="#47D7AC"] > a {
+    color: #FFFFFF !important;
+}
+[bgcolor="#F58427"] > a {
+    color: #FFFFFF !important;
+}
+[bgcolor="#F2F2F2"] {
+    background-color: #474747 !important;
+    color: #ababab !important;
+}
+[bgcolor="#EFEFEF"] {
+    background-color: #000000 !important;
+}
+[bgcolor="#0084D5"] {
+    background-color: #0084D5 !important;
+    color: #FFFFFF !important;
+}
+[bgcolor="#47D7AC"] {
+    background-color: #085432 !important;
+    color: #FFFFFF !important;
+}
+[bgcolor="#F58427"] {
+    background-color: #973602 !important;
+    color: #FFFFFF !important;
+}
+h1, h2, h3, td {
+    color: #FFFFFF !important;
+    background-color: #000000 !important;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.mobileShow {
+    display: block !important;
+}
+.deviceWidth {
+    width: 100% !important;
+    padding: 0 !important;
+}
+.deviceBlock {
+    width: 100% !important;
+    padding: 0 !important;
+    display: block !important;
+}
+.button {
+    width: 100% !important;
+    border-radius: unset !important;
+    border-collapse: collapse !important;
+}
+/*Mobile Padding Classes*/
+.mobileRemoveTop {
+    padding-top: 0px !important;
+}
+.mobileRemoveBottom {
+    padding-bottom: 0px !important;
+}
+.mobileRemoveTB {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+.mobile20 {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+.mobileHeader {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    height: auto !important;
+}
+.addPaddingLeft25 {
+    padding-left: 25px !important;
+}
+.addPaddingTop10 {
+    padding-top: 10px !important;
+    padding-bottom: 0px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+.addPaddingTop20 {
+    padding-top: 20px !important;
+}
+.addPaddingBottom10 {
+    padding-bottom: 10px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.addPaddingTB20 {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+.addPaddingTB10 {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.addPaddingBottom20 {
+    padding-bottom: 20px !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+.mobile20 {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+.mobile10 {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+.padding0 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.center {
+    text-align: center !important;
+}
+.hideforsmall {
+    display: none;
+    visibility: hidden;
+    height: 0px;
+}
+.changealignment1 {
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+}
+.changealignment2 {
+    text-align: center !important;
+}
+.col-3 {
+    float: none !important;
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    padding: 0px !important;
+}
+.col-3-img {
+    display: block !important;
+    margin: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+}
+
+@media only screen and (max-width: 340px) {
+.small-text {
+    font-size: 13px !important;
+    line-height: 15px !important;
+}
+}
+</style>
+</head>
+
+<body$1 style="width:600px !important; min-width:600px !important; $2">
+<div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;padding:0;margin:0;">Support your project with an expert-led webinar, complete reference design and more.</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" role="presentation" bgcolor="#E6E6E6" style="width:100%;background-color:#E6E6E6;">
+  <tr>
+    <td width="100%" valign="top" bgcolor="#E6E6E6" style="padding:10px 0px 0px 0px;margin:0;background-color:#E6E6E6;width:100%;"><!--[if (gte mso 9)|(IE)]>
+	<table width="600" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#FFFFFF">
+	<tr valign="top">
+	<td style="padding:0;margin:0;"><![endif]-->
+      <table width="600"$1 style="$2; table-layout:fixed;" role="presentation" class="deviceWidth">
+      
+      </table>
+
+      <!--[if (gte mso 9)|(IE)]>
+	</td>
+	</tr>
+	<tr valign="top">
+	<td style="padding:0;margin:0;">
+	<![endif]-->
+
+      <table width="600" class="deviceWidth" border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" bgcolor="#000000" style="margin:0 auto;width: 600px;padding:0;border-collapse:collapse;background-color: #000000;">
+        <tr>
+          <td align="left" valign="middle" bgcolor="#000000" class="deviceWidth" style="padding:0px;margin:0;background-color: #000000;"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" role="presentation">
+              <tbody>
+                <tr>
+                  <td valign="top" align="center"><a href="https://www.arrow.com/en/components" target="_blank"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B0eebc93a-f74c-4afe-ad94-b5d5e8739bed%7D_ArrowEmailHeader_line_logo.jpg" width="195" alt="Arrow Electronics Inc." style="border: 0px; width: 195px; display: block;"/></a></td>
+                  <td valign="top" align="center"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="hideforsmall">
+                      <tbody>
+                        <tr>
+                          <td valign="top" align="center"><img src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B58251005-73cf-42af-91ba-63416c6f22bc%7D_ArrowEmailHeader_line_space.jpg" width="405" alt="" style="border: 0px; width: 405px; display: block;"/></td>
+                        </tr>
+                      </tbody>
+                    </table></td>
+                </tr>
+              </tbody>
+            </table></td>
+        </tr>
+
+        <tr>
+          <td align="right" valign="middle" bgcolor="#000000" class="deviceWidth" style="padding: 0px 10px 4px 10px; background-color: #000000;"><table bgcolor="#000000" width="100" border="0" align="right" cellpadding="0" cellspacing="0" role="presentation" class="hideforsmall" style="width:460px;background-color: #000000;">
+              <tr>
+                <td align="center" valign="bottom" bgcolor="#000000" style="padding: 2px 3px 2px 3px;background-color: #000000;"><table width="100" border="0" cellpadding="0" cellspacing="0" bgcolor="#000000" style="border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#0084D5;width:92px;background-color: #000000;" role="presentation">
+                    <tbody>
+                      <tr>
+                        <td align="center" valign="bottom" bgcolor="#000000" style="font-size:9px;line-height:10px;padding:0px;margin:0;background-color: #000000;"><a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/EventPlanHome.aspx" target="_blank" style="font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:9px;line-height:10px;color:#FFFFFF;font-style:normal;font-weight:normal;text-align:center;margin:0;padding:0;text-decoration:none;">ESC Americas</a></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+                <td align="center" valign="bottom" bgcolor="#000000" style="padding: 2px 3px 2px 3px;background-color: #000000;"><table width="100" border="0" cellpadding="0" cellspacing="0" bgcolor="#000000" style="border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#0084D5;width:92px;background-color: #000000;" role="presentation">
+                    <tbody>
+                      <tr>
+                        <td align="center" valign="bottom" bgcolor="#000000" style="font-size:9px;line-height:10px;padding:0px;margin:0;background-color: #000000;"><a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Lattice-FPGA-Resources.aspx" target="_blank" style="font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:9px;line-height:10px;color:#FFFFFF;font-style:normal;font-weight:normal;text-align:center;margin:0;padding:0;text-decoration:none;">Lattice FPGA</a></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+                <td align="center" valign="bottom" bgcolor="#000000" style="padding: 2px 3px 2px 3px;background-color: #000000;"><table width="100" border="0" cellpadding="0" cellspacing="0" bgcolor="#000000" style="border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#0084D5;width:92px;background-color: #000000;" role="presentation">
+                    <tbody>
+                      <tr>
+                        <td align="center" valign="bottom" bgcolor="#000000" style="font-size: 9px;line-height:10px;padding:0px;"><a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/SW-Team.aspx" target="_blank" style="font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:9px;line-height:10px;color:#FFFFFF;font-style:normal;font-weight:normal;text-align:center;margin:0;padding:0;text-decoration:none;">SW ESC Americas</a></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+                <td align="center" valign="bottom" bgcolor="#000000" style="padding: 2px 3px 2px 3px;background-color: #000000;"><table width="100" border="0" cellpadding="0" cellspacing="0" bgcolor="#000000" style="border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#0084D5;width:92px;background-color: #000000;" role="presentation">
+                    <tbody>
+                      <tr>
+                        <td align="center" valign="bottom" bgcolor="#000000" style="font-size: 9px;line-height:10px;padding:0px;"><a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Migrations.aspx" target="_blank" style="font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:9px;line-height:10px;color:#FFFFFF;font-style:normal;font-weight:normal;text-align:center;margin:0;padding:0;text-decoration:none;">Migrations</a></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+                <td align="center" valign="bottom" bgcolor="#000000" style="padding: 2px 3px 2px 3px;background-color: #000000;"><table width="100" border="0" cellpadding="0" cellspacing="0" bgcolor="#000000" style="border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#0084D5;width:92px;background-color: #000000;" role="presentation">
+                    <tbody>
+                      <tr>
+                        <td align="center" valign="bottom" bgcolor="#000000" style="font-size:9px;line-height:10px;padding:0px;margin:0;background-color: #000000;"><a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/_layouts/15/stream.aspx?id=%2Fsites%2FArrowEngineering%2FESChome%2FShared%20Documents%2FSalesForce%5FOpenACaseTraining%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E90c9bcc6%2D1ce6%2D419e%2Dbfda%2D59f82a7fcb18" target="_blank" style="font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:9px;line-height:10px;color:#FFFFFF;font-style:normal;font-weight:normal;text-align:center;margin:0;padding:0;text-decoration:none;">Create a case</a></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+
+        <tr>
+          <td class="deviceWidth" valign="top" style="padding:0;margin:0;" bgcolor="#FFFFFF"><a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/Lattice-FPGA-Resources.aspx" target="_blank"><img src="https://raw.githubusercontent.com/merodri93arrow/images/main/FPGA_Sharepoint.png" alt="FPGA Dedicated SharePoint" border="0" width="200" style="display: block; width: 610px;" class="deviceWidth"/></a></td>
+        </tr>
+        
+        <tr>
+          <td bgcolor="#FFFFFF" style="font-size: 14px; line-height: 18px; color: #000000; font-weight: normal; text-align: left; font-family: 'Arrow Text', Arial, 'Helvetica Neue', Helvetica, sans-serif; vertical-align: top; padding:10px 50px 10px 50px; margin:0;" class="mobile20">Dear Arrow Team,
+
+We are pleased to inform you about the new sections that have been added to the Lattice FPGA Dedicated SharePoint:
+</td>
+        </tr>
+
+
+<!-- NUEVA Sección: Know Issues de agosto (con imagen) -->
+<tr>
+  <td bgcolor="#FFFFFF" style="padding:0 50px 20px 50px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td width="100%" valign="top" style="padding:10px; text-align:center;">
+          <img src="https://bitbucket.org/arrowesc/lattice/raw/8f75a3fc1fef00fe71741d61567dc6a0da32da7a/2025_08/image01.png"
+               alt="Known Issues - Agosto"
+               style="display:block; max-width:300px; width:100%; height:auto; margin:auto;" />
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" valign="top" style="padding:10px; font-family:'Arrow Text',Arial,sans-serif; font-size:14px; line-height:18px; color:#000; text-align:justify;">
+          <strong>Know Issues – Agosto</strong>
+          <ul style="padding-left:20px; margin:8px 0;">
+            <li>Silicon Rollout & Documentation Matrix Sharing</li>
+            <li>Avant Memory Controller v2.6.0: Issue Communication</li>
+            <li>Nexus: DDR3 Power Down Issue</li>
+            <li>Nexus: LPDDR4 Memory Controller PLL Reference Clock Update</li>
+            <li>MachXO5-NX: RoT Device Provisioning UG Update</li>
+            <li>Propel 2025.1: New DRC rule for AXI base address</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr><td style="border-bottom:1px dashed #CCCCCC; font-size:1px; line-height:1px;">&nbsp;</td></tr>
+    </table>
+  </td>
+</tr>
+
+
+<!-- Section: New Archives (Text Only) -->
+<tr>
+  <td bgcolor="#FFFFFF" style="padding:0 50px 20px 50px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td width="100%" valign="top" style="padding:10px; font-family:'Arrow Text',Arial,sans-serif; font-size:14px; line-height:18px; color:#000; text-align:justify;">
+          <strong>New Archives</strong><br>
+          <em>EOL Seller's Guide</em>
+          <ul style="padding-left:20px; margin:8px 0;">
+            <li><strong>Why do vendors EOL?</strong>
+              <ul style="padding-left:18px; margin:6px 0;">
+                <li>Vendor forecasts low revenue and it’s a high overhead to maintain in the catalog.</li>
+                <li>Vendor anticipating challenging revenue forecast and an EOL lifetime buy accelerates short-term revenue to improve the balance sheet.</li>
+                <li>Fab is shutting down a line and no suitable alternative fab running the same process is available.</li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr><td style="border-bottom:1px dashed #CCCCCC; font-size:1px; line-height:1px;">&nbsp;</td></tr>
+    </table>
+  </td>
+</tr>
+
+
+<!-- Section: Lattice Selector Guide Update (Image Left, Text Right) -->
+<tr>
+  <td bgcolor="#FFFFFF" style="padding:0 50px 20px 50px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <!-- Imagen a la izquierda -->
+        <td width="40%" valign="top" style="padding:10px;">
+          <a href="https://arrowelectronics.sharepoint.com/:x:/r/sites/ArrowEngineering/ESChome/_layouts/15/Doc.aspx?sourcedoc=%7BB3D5087A-EE1D-4318-90BA-0C75734DA2F2%7D&file=Lattice_GUI.xlsx&action=default&mobileredirect=true" style="text-decoration:none; color:inherit; display:block;">
+            <img src="https://bitbucket.org/arrowesc/lattice/raw/bdd380910661f8347ac981ff5a9b87da51e8e5bc/2025_07/selector_guide.png"
+                 alt="Lattice Selector Guide"
+                 style="display:block; width:100%; max-width:200px; height:auto;" />
+          </a>
+        </td>
+        <!-- Texto a la derecha -->
+        <td width="60%" valign="top"
+            style="padding:10px; font-family:'Arrow Text',Arial,sans-serif;
+                  font-size:14px; line-height:18px; color:#000;
+                  text-align:justify;">
+          <strong>Lattice Selector Guide – Database Update</strong><br>
+          <ul style="padding-left:20px; margin:8px 0;">
+            <li>Added <strong>1,014</strong> part numbers.</li>
+            <li>New feature columns:
+              <ul style="padding-left:18px; margin:6px 0;">
+                <li>Tools</li>
+                <li>PCIe (Soft or Hard IP)</li>
+                <li>MIPI (Soft or Hard IP)</li>
+                <li>Configuration type (internal or external)</li>
+                <li>Maximum input frequency</li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr><td style="border-bottom:1px dashed #CCCCCC; font-size:1px; line-height:1px;">&nbsp;</td></tr>
+    </table>
+  </td>
+</tr>
+
+<!-- Section: August 2025 Broad Market Webcast (con imagen al inicio) -->
+<tr>
+  <td bgcolor="#FFFFFF" style="padding:0 50px 20px 50px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td width="100%" valign="top" style="padding:10px; text-align:center;">
+          <img src="https://bitbucket.org/arrowesc/lattice/raw/8f75a3fc1fef00fe71741d61567dc6a0da32da7a/2025_08/image02.png"
+               alt="Broad Market Webcast"
+               style="display:block; max-width:300px; width:100%; height:auto; margin:auto;" />
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" valign="top" style="padding:10px; font-family:'Arrow Text',Arial,sans-serif; font-size:14px; line-height:18px; color:#000; text-align:justify;">
+          <strong>August 2025 Broad Market Webcast</strong>
+          <ul style="padding-left:20px; margin:8px 0;">
+            <li><em>2025.1 IP and Solutions Update</em> – Ramaprasad Kowshika</li>
+            <li><em>Lattice Partner Network Overview</em> – Kambiz Khalilian</li>
+            <li><em>Partner Solutions: USB Solutions on Lattice FPGA (by SLS)</em> – Kambiz Khalilian</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr><td style="border-bottom:1px dashed #CCCCCC; font-size:1px; line-height:1px;">&nbsp;</td></tr>
+    </table>
+  </td>
+</tr>
+
+
+<!-- 🔴 Sección de Migraciones ELIMINADA por solicitud -->
+
+<!-- Section: Digital Test Drive (Image Left, Text Right) — SIN tabla de boards -->
+<tr>
+  <td bgcolor="#FFFFFF" style="padding:0 50px 20px 50px;">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <!-- Imagen a la izquierda -->
+        <td width="40%" valign="top" style="padding:10px;">
+          <a href="https://arrowelectronics.sharepoint.com/sites/ArrowEngineering/ESChome/SitePages/ESC-Digital-Test-Drive-(DTD).aspx?csf=1&web=1&e=fBX3kU&CID=479ebc95-5a59-482e-98a0-12f49d0a15c8" style="text-decoration:none; color:inherit; display:block;">
+            <img src="https://bitbucket.org/arrowesc/lattice/raw/9091948b2631a6d6168e63f36872240d584a8d97/2025_06/dtd.png"
+                 alt="Digital Test Drive"
+                 style="display:block; width:100%; max-width:200px; height:auto;" />
+          </a>
+        </td>
+        <!-- Texto a la derecha -->
+        <td width="60%" valign="top"
+            style="padding:10px; font-family:'Arrow Text',Arial,sans-serif;
+                  font-size:14px; line-height:18px; color:#000;
+                  text-align:justify;">
+          <strong>Digital Test Drive (DTD)</strong><br>
+          Experience Lattice tools and evaluation boards remotely with Digital Test Drive no setup needed, just a browser. Request your session today through Salesforce.
+        </td>
+      </tr>
+    </table>
+    <!-- (La tabla de 4 boards fue retirada) -->
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr><td style="border-bottom:1px dashed #CCCCCC; font-size:1px; line-height:1px;">&nbsp;</td></tr>
+    </table>
+  </td>
+</tr>
+
+        <tr>
+          <td bgcolor="#FFFFFF" colspan="3" height="20" style="background-color: #FFFFFF;"></td>
+        </tr>
+
+          <tr>
+            <td style="margin:0; padding:5px 0px 0px 0px;background-color: #000000;"><table width="600" align="center" bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin:0 auto; width: 600px; padding:0;background-color: #000000;" class="deviceWidth">
+                <tr>
+                  <td class="deviceWidth" valign="top" style="padding:0;margin:0;background-color: #000000;" bgcolor="#000000"><table width="600" border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="deviceWidth" bgcolor="#000000" style="background-color: #000000;">
+                      <tbody>
+                        <tr>
+                          <td width="20" align="center" valign="top" bgcolor="#000000" class="deviceBlock" style="padding:0;margin:0;background-color: #000000;"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="hideforsmall" bgcolor="#000000" style="background-color: #000000;">
+                              <tbody>
+                                <tr>
+                                  <td bgcolor="#000000" style="background-color: #000000;"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B5dce51ab-69dd-4959-abdf-940572c36dee%7D_ArrowEmailFooter_line_spacer_50x50.jpg" width="50" style="display: block; width: 50px; border:0px;" alt=""/></td>
+                                </tr>
+                              </tbody>
+                            </table></td>
+                          <td width="144" align="center" bgcolor="#000000" class="deviceBlock" style="padding:0;margin:0;background-color:#000000;"><table width="144" border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" bgcolor="#000000" style="width:144px;padding:0;margin:0;background-color:#000000;">
+                              <tbody>
+                                <tr>
+                                  <td width="36" align="center" valign="top" bgcolor="#000000" style="background-color:#000000;"><a href="https://www.facebook.com/ArrowDotCom" target="_blank"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B88682dd6-675c-4291-8285-8f7923147347%7D_Arrow-Email-Footer_FB_logo_2023.jpg" width="36" alt="Facebook" style="border:0px;width:36px;display: block;"/></a></td>
+                                  <td width="36" align="center" valign="top" bgcolor="#000000" style="background-color:#000000;"><a href="https://www.linkedin.com/company/arrow-electronics-digital/?viewAsMember=true" target="_blank"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7Bf91bba42-1094-4ee0-afa0-6d0bdb78216b%7D_Arrow-Email-Footer_LI_logo_2023.jpg" width="36" alt="LinkedIn" style="border:0px;width:36px;display: block;"/></a></td>
+                                  <td width="36" align="center" valign="top" bgcolor="#000000" style="background-color:#000000;"><a href="https://www.youtube.com/channel/UCPyQ-SpXmUVEyEzC_4s4pQA" target="_blank"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B9a32d9f7-8d0d-437a-b4da-c045cd43a26e%7D_Arrow-Email-Footer_YT_logo_2023.jpg" width="36" alt="" style="border:0px;width:36px;display: block;"/></a></td>
+                                  <td width="36" align="center" valign="top" bgcolor="#000000" style="background-color:#000000;"><a href="https://www.instagram.com/arrowelectronics/" target="_blank"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7Be85ffe99-d99f-4ac6-97fd-01a4acded52d%7D_Arrow-Email-Footer_IG_logo_2023.jpg" width="36" alt="" style="border:0px;width:36px;display: block;"/></a></td>
+                                </tr>
+                              </tbody>
+                            </table></td>
+                          <td width="62" align="center" valign="top" bgcolor="#000000" class="deviceBlock" style="padding:0;margin:0;background-color: #000000;"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="hideforsmall" bgcolor="#000000" style="background-color: #000000;">
+                              <tbody>
+                                <tr>
+                                  <td bgcolor="#000000" style="background-color: #000000;"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B26c6cf7e-a6ed-4690-95ac-848076b85750%7D_ArrowEmailFooter_line_spacer_156x50.jpg" width="156" style="display: block; width: 156px; border:0px;" alt=""/></td>
+                                </tr>
+                              </tbody>
+                            </table></td>
+                          <td align="center" valign="top" bgcolor="#000000" class="deviceBlock" style="padding:0;margin:0;background-color: #000000;"><a href="https://www.arrow.com/en/components" target="_blank"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7Bd3bb540a-ef02-40f3-bed8-6f5bc226d1a4%7D_Arrow-Email-Footer_logo.jpg" width="210" alt="Arrow.com" style="border: 0px; width: 210px; display: block;"/></a></td>
+                          <td width="20" align="center" valign="top" bgcolor="#000000" class="deviceBlock" style="padding:0;margin:0;background-color: #000000;"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="hideforsmall">
+                              <tbody>
+                                <tr>
+                                  <td bgcolor="#000000" style="background-color: #000000;"><img border="0" src="https://images.connected.arrow.com/EloquaImages/clients/ArrowElectronicsInc/%7B36192529-e329-479f-8f9f-4c493514e158%7D_ArrowEmailFooter_line_spacer_40x50.jpg" width="40" style="display: block; width: 40px; border:0px;" alt=""/></td>
+                                </tr>
+                              </tbody>
+                            </table></td>
+                        </tr>
+                      </tbody>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td bgcolor="#000000" style="font-size: 9px; line-height: 13px; color: #EEEEEE;font-style: normal; font-weight: normal; text-align: center;font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif; padding:0px 20px 10px 20px;margin:0;background-color: #000000;">&copy; 2025 Arrow Electronics, Inc. All rights reserved.</td>
+                </tr>
+              </table></td>
+          </tr>
+
+        <tr>
+          <td class="center" align="right" valign="top" bgcolor="#E6E6E6" style="font-size: 9px; line-height: 13px; padding: 5px 5px 10px 5px;"><span style="font-family: 'Arrow Text', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 9px; line-height: 13px; color: #505050; margin: 0px; padding: 0px; font-style: normal; font-weight: normal; text-align: center;"> <a href="https://www.arrow.com/en/legal/privacy-policy" target="_blank" style="font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 9px; line-height: 13px; color: #505050; margin: 0px; padding: 0px; font-style: normal; font-weight: normal; text-align: center;"> Privacy Policy</a> | <a href="https://connection.arrow.com/unsubscribe-from-arrow" target="_blank" style="font-family: 'Arrow Display', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 9px; line-height: 13px; color: #505050; margin: 0px; padding: 0px; font-style: normal; font-weight: normal; text-align: center;">Unsubscribe</a></span></td>
+        </tr>
+      </table>
+
+      
+
+      <!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+ <![endif]--></td>
+  </tr>
+</table>
+<div style="display:none; white-space:nowrap; font:15px courier; color:#ffffff;"> - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </div>
+</body>
+</html>
