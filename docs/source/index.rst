@@ -1,11 +1,4 @@
-Lattice Software Quick Starter
+Lattice 
 ==============================
 
-Selector
---------
-
-.. raw:: html
-
-   <iframe src="lattice.html"
-           style="width:100%; height:85vh; border:0;"
-           title="Lattice"></iframe>
+- `Abrir Lattice Selector <_static/lattice.html>`_
