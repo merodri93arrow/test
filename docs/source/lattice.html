@@ -142,14 +142,14 @@ td.left{text-align:left !important;}
 <script>
 /* ===================== CONFIG ===================== */
 // Excel file location (relative next to this HTML, or absolute OneDrive/SharePoint link with ?download=1)
-let EXCEL_URL = "https://arrowelectronics.sharepoint.com/sites/ESCAMERICAS129/Lists/Lattice_GUI_sharepoint_version/AllItems.aspx?ovuser=0beb0c35%2D9cbb%2D4feb%2D99e5%2D589e415c7944%2CMorrison%2ERodriguez%40arrow%2Ecom&OR=Teams%2DHL&CT=1756834678657&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTA3MzExNzQxMyIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D";
+let EXCEL_URL = "https://bitbucket.org/arrowesc/lattice/raw/master/sharepoint/Lattice_GUI_sharepoint_version.xlsx";
 // Optional override with querystring: ?excel=<url>
 (function(){ const p=new URLSearchParams(location.search); if(p.has("excel")) EXCEL_URL=p.get("excel"); })();
 
 // Two logos (same height; widths can vary)
-let LOGO1_URL  = "https://arrowelectronics.sharepoint.com/:i:/r/sites/ESCAMERICAS129/Shared%20Documents/FPGA%20Content/Sharepoint/Lattice%20Documents/Brand_logos/Arrow_Worm_white.jpg?csf=1&web=1&e=EegNtI";   // e.g. Arrow icon
+let LOGO1_URL  = "https://bitbucket.org/arrowesc/lattice/raw/b15f14d70f246b41b711f3234a9612d010ade8ae/sharepoint/brand_logos/Arrow_Worm_white.jpg";   // e.g. Arrow icon
 let LOGO1_LINK = "https://www.arrow.com/";                // optional target when clicking logo 1
-let LOGO2_URL  = "https://arrowelectronics.sharepoint.com/:i:/r/sites/ESCAMERICAS129/Shared%20Documents/FPGA%20Content/Sharepoint/Lattice%20Documents/Brand_logos/Lattice_Logo_Black_TransparentBG.jpg?csf=1&web=1&e=Ky56SA";   // e.g. Lattice logo (wider)
+let LOGO2_URL  = "https://bitbucket.org/arrowesc/lattice/raw/b15f14d70f246b41b711f3234a9612d010ade8ae/sharepoint/brand_logos/Lattice_Logo_Black_TransparentBG.jpg";   // e.g. Lattice logo (wider)
 let LOGO2_LINK = "https://www.latticesemi.com/";                // optional target when clicking logo 2
 
 /* ============== Columns configuration ============== */
