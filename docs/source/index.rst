@@ -1,4 +1,4 @@
-Lattice Software Quick Starter
+Lattice 
 ==============================
 .. raw:: html
    :file: lattice.html
