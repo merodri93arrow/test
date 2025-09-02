@@ -116,10 +116,6 @@ td.left{text-align:left !important;}
   <div class="brand-logos">
     <a id="logo1-link" href="#" target="_blank" rel="noopener" aria-label="Logo 1">
       <img id="logo1-img" class="logo" alt="Logo 1" />
-    </a>
-    <a id="logo2-link" href="#" target="_blank" rel="noopener" aria-label="Logo 2">
-      <img id="logo2-img" class="logo" alt="Logo 2" />
-    </a>
   </div>
   <h1 class="app-title"></h1>
   <div class="actions">
@@ -478,11 +474,11 @@ document.getElementById("btn-export").addEventListener("click", exportDetailsToX
 (function init(){
   // Logos
   const img1=document.getElementById("logo1-img"), link1=document.getElementById("logo1-link");
-  const img2=document.getElementById("logo2-img"), link2=document.getElementById("logo2-link");
+  
   if(LOGO1_URL && LOGO1_URL.trim()!==''){ img1.src=LOGO1_URL; img1.style.display="block"; } else { img1.style.display="none"; }
-  if(LOGO2_URL && LOGO2_URL.trim()!==''){ img2.src=LOGO2_URL; img2.style.display="block"; } else { img2.style.display="none"; }
+  
   if(LOGO1_LINK && LOGO1_LINK.trim()!==''){ link1.href=LOGO1_LINK; } else { link1.removeAttribute("href"); link1.style.pointerEvents="none"; }
-  if(LOGO2_LINK && LOGO2_LINK.trim()!==''){ link2.href=LOGO2_LINK; } else { link2.removeAttribute("href"); link2.style.pointerEvents="none"; }
+ 
 
   // Data
   enableDataUI(false);
